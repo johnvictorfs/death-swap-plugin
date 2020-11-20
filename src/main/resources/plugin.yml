@@ -1,0 +1,12 @@
+name: DeathSwap
+version: ${project.version}
+main: johnvictorfs.deathswap.DeathSwap
+api-version: 1.16
+authors: [ johnvictorfs ]
+description: Adds the /death_swap command to a Bukkit/Spigot/PaperMC Minecraft Servers to swap players in the server every X minutes.
+website: https://github.com/johnvictorfs/death-swap-plugin
+commands:
+  death_swap:
+    description: "Start/Stop Death Swap shenanigans (default is every 5 minutes)"
+    usage: "Usage: /death_swap [start|stop|now] (period=5)"
+    permission: death_swap.tasks
