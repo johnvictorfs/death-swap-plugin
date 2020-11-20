@@ -17,7 +17,7 @@ public class PlayerSwapTask implements Runnable {
         ChatCountdown countdown = new ChatCountdown(plugin, seconds);
         countdown.startSecondsCountdown();
 
-        while (Bukkit.getScheduler().isQueued(countdown.taskID));
+        while (Bukkit.getScheduler().isQueued(countdown.taskID)) ;
     }
 
     public void run() {
@@ -51,8 +51,17 @@ public class PlayerSwapTask implements Runnable {
         Iterator<Player> player2 = playersListCopy.iterator();
 
         List<PlayerPair> pairs = new ArrayList<>();
+        Set<UUID> alreadyPaired = new HashSet<>();
         while (player1.hasNext() && player2.hasNext()) {
-            pairs.add(new PlayerPair(player1.next(), player2.next()));
+            Player first = player1.next();
+            Player second = player1.next();
+
+            if (alreadyPaired.contains(first.getUniqueId()) || alreadyPaired.contains(second.getUniqueId())) continue;
+
+            alreadyPaired.add(first.getUniqueId());
+            alreadyPaired.add(second.getUniqueId());
+
+            pairs.add(new PlayerPair(first, second));
         }
 
         return pairs;

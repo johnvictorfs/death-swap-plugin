@@ -14,6 +14,10 @@ public class PlayerPair {
         this.second = secondPlayer;
     }
 
+    public String toString() {
+        return "(" + this.first.getName() + ", " + this.second.getName() + ")";
+    }
+
     public void swapPlaces() {
         Location firstLocation = this.first.getLocation();
         Location secondLocation = this.second.getLocation();

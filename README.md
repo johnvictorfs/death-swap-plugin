@@ -2,9 +2,9 @@
 
 Adds the `/death_swap` command to a Bukkit/Spigot/PaperMC Minecraft Servers to swap players in the server (not randomly, in a set sequence) every X minutes.
 
-The swapping has a 10 second countdown in the chat before it happens (currently not configurable)
+The swapping has a 10 seconds countdown in the chat before it happens (currently not configurable)
 
-![image](https://user-images.githubusercontent.com/37747572/99856835-9fa64800-2b68-11eb-9021-eebf3132a5fc.png)
+![image](https://user-images.githubusercontent.com/37747572/99858631-c49cba00-2b6c-11eb-8c69-c82efb03dc48.png)
 
 ---
 
