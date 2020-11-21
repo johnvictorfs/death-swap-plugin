@@ -44,24 +44,17 @@ public class PlayerSwapTask implements Runnable {
 
     List<PlayerPair> playerPairs(Player[] players) {
         List<Player> playersList = Arrays.asList(players);
-        List<Player> playersListCopy = Arrays.asList(Arrays.copyOf(players, players.length));
-        Collections.reverse(playersListCopy);
+        Collections.shuffle(playersList);
 
-        Iterator<Player> player1 = playersList.iterator();
-        Iterator<Player> player2 = playersListCopy.iterator();
+        Iterator<Player> playersIterator = playersList.iterator();
 
         List<PlayerPair> pairs = new ArrayList<>();
-        Set<UUID> alreadyPaired = new HashSet<>();
-        while (player1.hasNext() && player2.hasNext()) {
-            Player first = player1.next();
-            Player second = player2.next();
+        while(playersIterator.hasNext()) {
+            Player first = playersIterator.next();
+            if (!playersIterator.hasNext()) break;
 
-            if (alreadyPaired.contains(first.getUniqueId()) || alreadyPaired.contains(second.getUniqueId())) continue;
-
-            alreadyPaired.add(first.getUniqueId());
-            alreadyPaired.add(second.getUniqueId());
-
-            pairs.add(new PlayerPair(first, second));
+            PlayerPair pair = new PlayerPair(first, playersIterator.next());
+            pairs.add(pair);
         }
 
         return pairs;

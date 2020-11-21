@@ -58,9 +58,15 @@ public class DeathSwapExecutor implements CommandExecutor {
         this.swapPlayersTask = Bukkit.getScheduler().runTaskTimerAsynchronously(this.plugin, this.swapPlayers, secondsPeriod * 20, secondsPeriod * 20);
         this.swapPlayersTaskId = this.swapPlayersTask.getTaskId();
 
-        Bukkit.broadcastMessage(ChatColor.GREEN + "Started Death Swap every " + (secondsPeriod / 60) + " minutes.");
+        int minutes = secondsPeriod / 60;
+
+        Bukkit.broadcastMessage(ChatColor.GREEN + "Started Death Swap every " + minutes + pluralize(" minute", "s", minutes) + ".");
 
         return true;
+    }
+
+    String pluralize(String singular, String end, int count) {
+        return count > 1 ? singular + end : singular;
     }
 
     private boolean stopSwapTask() {
