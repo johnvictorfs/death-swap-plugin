@@ -54,7 +54,7 @@ public class PlayerSwapTask implements Runnable {
         Set<UUID> alreadyPaired = new HashSet<>();
         while (player1.hasNext() && player2.hasNext()) {
             Player first = player1.next();
-            Player second = player1.next();
+            Player second = player2.next();
 
             if (alreadyPaired.contains(first.getUniqueId()) || alreadyPaired.contains(second.getUniqueId())) continue;
 
